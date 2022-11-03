@@ -2,7 +2,7 @@
 URP Screenspace 연습 프로젝트
 
 
-공식
+공식\n
 https://docs.unity3d.com/kr/2021.3/Manual/srp-creating-render-pipeline-asset-and-render-pipeline-instance.html
 
 https://alexanderameye.github.io/notes/rendering-outlines/
