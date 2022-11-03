@@ -14,3 +14,7 @@ https://portal.productboard.com/8ufdwj59ehtmsvxenjumxo82/tabs/3-universal-render
 예제 프로젝트
 https://github.com/keijiro/Kino
 https://github.com/EricHu33/ToonShaderWithOutline
+
+포럼
+
+https://forum.unity.com/threads/outline-effect.980034/
