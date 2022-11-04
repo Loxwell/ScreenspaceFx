@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   passSettings:
-    renderPassEvent: 600
+    renderPassEvent: 400
     filterMode: 0
 --- !u!114 &-506678810784502688
 MonoBehaviour:
@@ -28,10 +28,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17002b40c45658847b3d08314bb2184b, type: 3}
   m_Name: SSBlurFeature
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   passSettings:
     downsample: 2
-    blurStrength: 5
+    blurStrength: 4
     renderPassEvent: 500
 --- !u!114 &11400000
 MonoBehaviour:

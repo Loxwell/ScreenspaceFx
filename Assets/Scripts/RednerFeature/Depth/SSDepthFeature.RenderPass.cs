@@ -18,14 +18,15 @@ public partial class SSDepthFeature
         readonly int TEMPORARY_BUFFER_ID = Shader.PropertyToID("_TemporaryBuffer");
 
 
-        Material m_material;
+        Material m_depthMaterial;
+
         RenderTargetIdentifier m_originID;
         RenderTargetIdentifier m_temporaryID;
         PassSettings passSettings;
 
         internal SSDepthRenderPass(PassSettings passSettings)
         {
-            m_material = CoreUtils.CreateEngineMaterial("ScreenSpace/Depth");
+            m_depthMaterial = CoreUtils.CreateEngineMaterial("ScreenSpace/Depth");
             this.passSettings = passSettings;
         }
 
@@ -50,8 +51,10 @@ public partial class SSDepthFeature
 
             using(new ProfilingScope(cmd, new ProfilingSampler(PROFILER_TAG)))
             {
-                Blit(cmd, m_originID, m_temporaryID, m_material, 0);
+                Blit(cmd, m_originID, m_temporaryID, m_depthMaterial, 0);
                 Blit(cmd, m_temporaryID, m_originID);
+
+                #region EXAMPLE_CODE
                 //var cam = renderingData.cameraData.camera;
                 //cmd.SetViewProjectionMatrices(Matrix4x4.identity, Matrix4x4.identity);
                 //cmd.DrawMesh(RenderingUtils.fullscreenMesh, Matrix4x4.identity, m_material);
@@ -60,6 +63,7 @@ public partial class SSDepthFeature
                 //CoreUtils.SetKeyword(cmd, ShaderKeywordStrings.MainLightShadows, false);
                 //CoreUtils.SetKeyword(cmd, ShaderKeywordStrings.MainLightShadowCascades, false);
                 //CoreUtils.SetKeyword(cmd, ShaderKeywordStrings.MainLightShadowScreen, true);
+                #endregion
             }
 
             context.ExecuteCommandBuffer(cmd);
@@ -75,9 +79,9 @@ public partial class SSDepthFeature
         {
             renderPassEvent = passSettings.renderPassEvent;
             //ConfigureInput(ScriptableRenderPassInput.Depth);
-            return m_material != null;
+            return m_depthMaterial != null;
         }
 
-        public static implicit operator bool(SSDepthRenderPass rh) => rh?.m_material != null;
+        public static implicit operator bool(SSDepthRenderPass rh) => rh?.m_depthMaterial != null;
     }
 }
